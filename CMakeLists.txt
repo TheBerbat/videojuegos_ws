@@ -44,7 +44,7 @@ file(
     "src/myman/*.cpp"
 )
 add_library(mymanLIB ${mymanLIB_SRC})
-target_include_directories(mymanLIB PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/man")
+target_include_directories(mymanLIB PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 
 add_executable(game src/main.cpp)
