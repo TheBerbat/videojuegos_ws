@@ -1,6 +1,7 @@
 #include <cstdint>
 #include <iostream>
 #include <mysys/render.hpp>
+#include <myman/entitymanager.hpp>
 
 constexpr int kSCRWIDTH  { 640 };
 constexpr int kSCRHEIGHT { 360 };
