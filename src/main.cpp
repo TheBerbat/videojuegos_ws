@@ -5,6 +5,7 @@ extern "C"{
 #include <cstdint>
 #include <iostream>
 #include <memory>
+#include <mysys/render.hpp>
 
 constexpr uint32_t kR = 0x00FF0000;
 constexpr uint32_t kG = 0x0000FF00;
@@ -62,7 +63,14 @@ int main()
 {
     try
     {
-        execute();
+        ECS::RenderSystem_t Render{kSCRWIDTH,kSCRHEIGHT};
+
+        while (!ptc_process_events())
+        {
+            /* code */
+        }
+        
+        //execute();
     }
     catch(std::exception& e)
     {

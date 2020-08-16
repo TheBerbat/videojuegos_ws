@@ -13,12 +13,21 @@ file(
     "src/libs/picoPNG/*.cpp"
 )
 
+file(
+    GLOB sys_SRC
+    "src/mysys/*.hpp"
+    "src/mysys/*.cpp"
+)
+
 add_library(tinyPTC ${tinyPTC_SRC})
 add_library(picoPNG ${picoPNG_SRC})
+add_library(mysysLIB ${sys_SRC})
 
 
 target_include_directories(tinyPTC PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/libs")
 target_include_directories(picoPNG PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/libs")
+target_include_directories(mysysLIB PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/")
 
 add_executable(game src/main.cpp)
-target_link_libraries(game PRIVATE tinyPTC picoPNG X11)
+target_link_libraries(game PRIVATE tinyPTC picoPNG X11 mysysLIB)
+target_link_libraries(mysysLIB PRIVATE tinyPTC)
