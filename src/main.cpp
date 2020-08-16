@@ -24,22 +24,12 @@ constexpr uint32_t sprite[8*8] ={
 constexpr int kSCRWIDTH  { 640 };
 constexpr int kSCRHEIGHT { 360 };
 
-// struct Screen_t
-// {
-//     Screen_t(uint32_t w, uint32_t h) : screen(new uint32_t[w*h]) {}
-// 
-//     ~Screen_t() { delete[] screen; }dd
-// 
-//     uint32_t* screen { nullptr };
-// };
-
 
 void execute()
 {
-    ptc_open("window2", kSCRWIDTH, kSCRHEIGHT);
+    ptc_open("window", kSCRWIDTH, kSCRHEIGHT);
 
-    // Screen_t scr(kSCRWIDTH, kSCRHEIGHT);
-    std::unique_ptr<uint32_t[]> screen = std::make_unique<uint32_t[]>(kSCRWIDTH*kSCRHEIGHT);
+    auto screen = std::make_unique<uint32_t[]>(kSCRWIDTH*kSCRHEIGHT);
 
     for(;;)
     {
