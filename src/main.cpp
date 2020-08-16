@@ -28,7 +28,7 @@ constexpr int kSCRHEIGHT { 360 };
 // {
 //     Screen_t(uint32_t w, uint32_t h) : screen(new uint32_t[w*h]) {}
 // 
-//     ~Screen_t() { delete[] screen; }
+//     ~Screen_t() { delete[] screen; }dd
 // 
 //     uint32_t* screen { nullptr };
 // };
