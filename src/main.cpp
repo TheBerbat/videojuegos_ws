@@ -10,15 +10,11 @@ int main()
     try
     {
         const ECS::RenderSystem_t Render{kSCRWIDTH,kSCRHEIGHT};
-        Render.update();
+        while(Render.update());
     }
-    catch(std::exception& e)
+    catch(...)
     {
         std::cout << "Capturada\n";
-    }
-    catch(const char* s)
-    {
-        std::cout << "Capturado string " << s << "\n";
     }
 
     return 0;
