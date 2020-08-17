@@ -4,14 +4,14 @@ extern "C"{
 #include <mysys/render.hpp>
 #include <myman/entitymanager.hpp>
 #include <algorithm>
+#include <myutil/gamecontext.hpp>
 
 namespace ECS
 {
-    RenderSystem_t::RenderSystem_t(uint32_t w, uint32_t h, EntityManager_t& em) 
+    RenderSystem_t::RenderSystem_t(uint32_t w, uint32_t h) 
      : m_w { w }
         , m_h { h }
         , m_framebuffer {std::make_unique<uint32_t[]>(m_w*m_h)}
-        , m_EntMan{em}
     {
         ptc_open("window", w, h);
     }
@@ -22,10 +22,8 @@ namespace ECS
     }
 
     void
-    RenderSystem_t::drawAllEntities() const
+    RenderSystem_t::drawAllEntities(const VecEntities_t& entities) const
     {
-        auto& entities { m_EntMan.getEntities() };
-
         for (auto& e : entities)
         {
             auto screen = m_framebuffer.get();
@@ -43,13 +41,13 @@ namespace ECS
     }
 
     bool
-    RenderSystem_t::update() const
+    RenderSystem_t::update(const GameContext_t& g) const
     {
         auto screen = m_framebuffer.get();
         const auto size = m_w*m_h;
         std::fill(screen, screen+size, kR);
         
-        drawAllEntities();
+        drawAllEntities(g.getEntities());
 
         ptc_update(screen);
         return !ptc_process_events();

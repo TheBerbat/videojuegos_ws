@@ -47,5 +47,23 @@ add_library(mymanLIB ${mymanLIB_SRC})
 target_include_directories(mymanLIB PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 
+file(
+    GLOB myutilLIB_SRC
+    "src/myutil/*.hpp"
+    "src/myutil/*.cpp"
+)
+add_library(myutilLIB ${myutilLIB_SRC})
+target_link_libraries(myutilLIB PRIVATE mymanLIB)
+target_include_directories(myutilLIB PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/")
+
+#file(
+#    GLOB mycompLIB_SRC
+#    "src/mycomp/*.hpp"
+#    "src/mycomp/*.cpp"
+#)
+#add_library(mycompLIB ${mycompLIB_SRC})
+#target_include_directories(mycompLIB PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/")
+
+
 add_executable(game src/main.cpp)
 target_link_libraries(game PRIVATE tinyPTC picoPNG mysysLIB mymanLIB)
