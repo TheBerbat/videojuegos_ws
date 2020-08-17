@@ -10,7 +10,10 @@ int main()
 {
     try
     {
-        const ECS::RenderSystem_t Render{kSCRWIDTH,kSCRHEIGHT};
+        ECS::EntityManager_t EntityMan;
+        EntityMan.createEntity(20, 40, 16, 16, 0x0000FF00);
+        EntityMan.createEntity(200, 100, 20, 20, 0x000FF0F0);
+        const ECS::RenderSystem_t Render{kSCRWIDTH,kSCRHEIGHT,EntityMan};
         while(Render.update());
     }
     catch(...)

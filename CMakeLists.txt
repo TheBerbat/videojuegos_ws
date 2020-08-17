@@ -48,4 +48,4 @@ target_include_directories(mymanLIB PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 
 add_executable(game src/main.cpp)
-target_link_libraries(game PRIVATE tinyPTC picoPNG mysysLIB)
+target_link_libraries(game PRIVATE tinyPTC picoPNG mysysLIB mymanLIB)
